@@ -1,1 +1,55 @@
-<h1>editando</h1>
+
+<div class= "row">
+      <div class= "col-lg-12">
+      <h1 class="h1 mb-0 text-gray-800">Editando</h1>
+      </div>     
+</div>
+
+      <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block">
+
+<div class="p-5">
+
+    <div class="text-center">
+        <h1 class="h4 text-gray-900 mb-4"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Preencha os Campos Corretamente</font></font></h1>
+    </div>
+
+    <% if @admin.errors.any? %>
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <h5 class="alert-heading">Erro</h5>
+    <button class="btn-close" type="button" data-bs-dismiss="alert" aria-label="Close"></button>
+    <ul>
+        <% @admin.errors.full_messages.each do |message| %>
+          <li> <%= message %> </li>
+        <% end %>
+      </ul>
+</div>
+    <% end %>
+
+    <%= form_with(model: [ :admins_backoffice, @admin ], local: true) do |form| %>
+
+        <div class="col-sm-3 mb-6 mb-sm-4">
+          <%= form.label :email %>
+          <%= form.text_field :email,  class: "form-control form-control-user" , id: "exampleFirstName", placeholder:"Digite seu email" %>
+        </div>
+        
+        <div class="col-sm-3 mb-sm-4"> 
+          <%= form.label :password %>
+          <%= form.password_field :password,  class: "form-control form-control-user" , id: "exampleFirstName", placeholder:"Senha" %>
+        </div>
+            
+        <div class="col-sm-3 mb-6">
+          <%= form.label :password_confirmation %>
+          <%= form.password_field :password_confirmation,  class: "form-control form-control-user" , id: "exampleFirstName", placeholder:"Confirme sua senha" %>
+        </div>
+
+            <br class="sidebar-divider d-none d-md-block">
+
+            <button href="#" class="btn btn-success btn-icon-split">
+                  <span class="icon text-white-60">
+                      <i class="fas fa-check"></i>
+                  </span>
+                    <span class="text">Editar</span>
+        </button>
+    <% end %>
+</div>
